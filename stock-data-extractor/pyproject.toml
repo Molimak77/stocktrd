@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "stock-data-extractor"
+version = "0.1.0"
+description = "A Python package for fetching, processing, and analyzing stock market data."
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "stock_data_extractor", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^2.0.0"
+pandas-market-calendars = "^4.0.0"
+plotly = "^5.0.0"
+requests = "^2.25.0"
+ib-insync = "^0.9.70"
+pydantic-settings = "^2.0.0"
+scikit-learn = "^1.0.0"
+numpy = "^1.20.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
