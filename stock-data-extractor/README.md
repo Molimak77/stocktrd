@@ -7,6 +7,7 @@
 - **Data Processing**: Visualize stock data with interactive plots.
 - **Feature Scaling**: Normalize data using `MinMaxScaler` and `StandardScaler`.
 - **Data Transformation**: Reshape data for time series analysis and machine learning models.
+- **Model Evaluation**: Evaluate model performance with the `EvalModel` class, which provides standard metrics and confusion matrix analysis.
 
 ## Installation
 You can install the package directly from PyPI:

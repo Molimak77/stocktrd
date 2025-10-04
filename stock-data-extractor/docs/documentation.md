@@ -15,7 +15,10 @@ The `processing.py` module contains the `StockProcessing` class, which is design
 ### 3. `transformation.py`
 This module includes the `VectorStock` and `TransformStock` classes, which are essential for preparing data for time series forecasting models. These classes help in creating sliding windows of data and transforming them into the required 3D matrix format.
 
-### 4. `config.py`
+### 4. `evaluation.py`
+This module introduces the `EvalModel` class, which is designed to assess the performance of prediction models. It provides a suite of tools for calculating standard regression metrics, visualizing results, and generating a confusion matrix to analyze trend prediction accuracy.
+
+### 5. `config.py`
 The `config.py` module manages the package's configuration, primarily handling API keys and other sensitive information through environment variables.
 
 ## Getting Started

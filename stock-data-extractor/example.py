@@ -7,6 +7,9 @@ from stock_data_extractor.processing import StockProcessing
 from stock_data_extractor.transformation import TransformStock
 
 
+from stock_data_extractor.evaluation import EvalModel
+
+
 def main():
     """
     Main function to demonstrate package functionalities.
@@ -41,15 +44,40 @@ def main():
     stock_processor.graph_stock("Close")
 
     # Get the 'Close' price data as a pandas DataFrame
-    close_prices = stock_processor.get_specific_data("Close")
-    if close_prices is not None:
+    close_prices_df = stock_processor.get_specific_data("Close")
+    if close_prices_df is not None:
+        close_prices = close_prices_df["Close"].values
         # Transform the data into a format suitable for time series models
-        transformer = TransformStock(close_prices["Close"].values, window_size=10)
+        transformer = TransformStock(close_prices, window_size=10)
         X, y = transformer.split_xy(for_training=True)
 
         print("\nTransformed Data Shapes:")
         print("Features (X) shape:", X.shape)
         print("Target (y) shape:", y.shape)
+
+        # --- Demonstrate EvalModel ---
+        # Create dummy predictions for demonstration
+        # In a real scenario, these would come from a trained model
+        y_pred = y * 0.95  # Simulate predictions with a 5% error
+
+        print("\n--- Model Evaluation ---")
+        evaluator = EvalModel(y_true=list(y), y_pred=list(y_pred))
+
+        # Get and print evaluation metrics
+        metrics = evaluator.metric()
+        print("\nEvaluation Metrics:")
+        print(metrics)
+
+        # Generate and print the confusion matrix
+        matrix, summary, _ = evaluator.confusion_matrix()
+        print("\nConfusion Matrix:")
+        print(matrix)
+        print("\nMetrics Summary:")
+        print(summary)
+
+        # Plot the evaluation
+        print("\nDisplaying evaluation graph...")
+        evaluator.graph_evaluation(title_name="Model Performance: GOOGL")
 
 
 if __name__ == "__main__":

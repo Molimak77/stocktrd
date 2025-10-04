@@ -13,6 +13,7 @@ from .config import AppConfig
 from .fetcher import ExtraDataStock
 from .processing import StockProcessing
 from .transformation import TransformStock, VectorStock
+from .evaluation import EvalModel
 
 __all__ = [
     "AppConfig",
@@ -20,4 +21,5 @@ __all__ = [
     "StockProcessing",
     "TransformStock",
     "VectorStock",
+    "EvalModel",
 ]
